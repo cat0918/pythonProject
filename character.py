@@ -2,7 +2,7 @@ from pico2d import *
 
 class Curby():
  def __init__(self):
-  self.x, self.y = 400, 50
+  self.x, self.y = 400, 100
   self.h = 360
   self.frame = 0
   self.count = 0
@@ -23,11 +23,13 @@ class Curby():
    if (dash > 0):
     self.h = 320
     self.frame = (self.frame + 0.7) % 7
-    self.x -= dir * 10
+    if(45<=self.x<=400):
+     self.x -= dir3 * 10
    elif (dash == 0):
     self.h = 360
     self.frame = (self.frame + 0.7) % 7
-    self.x -= dir * 5
+    if(45<=self.x<=400):
+     self.x -= dir3 * 5
   if (dir2 > 0):
    self.h = 280
    self.count += 1
@@ -39,7 +41,7 @@ class Curby():
     self.frame = 1
     self.count -= 1
     self.y -= dir2 * 30
-    if (self.y < 100):
+    if (self.y == 100):
      dir2 = 0
      self.count = 0
   if dir==0 and dir3==0 and dir2 == 0:

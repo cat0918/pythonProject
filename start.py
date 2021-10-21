@@ -2,7 +2,7 @@ from pico2d import *
 import character
 image = None
 x,y = 0,0
-
+count =0
 def enter():
     global image
     image = load_image('background.png')
@@ -10,16 +10,21 @@ def enter():
 def update():
     global x
     global y
+    global count
     if(character.dir>0):
         if(character.dash>0):
-          x += 10
+
+             x += 10
         elif(character.dash==0):
-           x += 5
+
+              x += 5
     elif(character.dir3>0):
         if(character.dash>0):
-            x-=10
+            if(x>0):
+             x-=10
         elif(character.dash==0):
-            x-=5
+            if(x>0):
+             x-=5
 
 def draw():
     global image
