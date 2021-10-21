@@ -19,20 +19,6 @@ class Curby():
     self.h = 360
     self.frame = (self.frame + 0.7) % 7
     #self.x += dir * 5
-  if(dir2 > 0):
-   self.h = 280
-   self.count +=1
-   self.frame = 0
-   if(self.count<10):
-    self.frame = 0
-    self.y +=dir2*20
-   elif(self.count>10):
-    self.frame = 1
-    self.count -=1
-    self.y -=dir2*30
-    if(self.y<100):
-     dir2=0
-     self.count=0
   if(dir3>0):
    if (dash > 0):
     self.h = 320
@@ -42,7 +28,21 @@ class Curby():
     self.h = 360
     self.frame = (self.frame + 0.7) % 7
     self.x -= dir * 5
-  if dir==0 and dir3==0:
+  if (dir2 > 0):
+   self.h = 280
+   self.count += 1
+   self.frame = 0
+   if (self.count < 10):
+    self.frame = 0
+    self.y += dir2 * 20
+   elif (self.count > 10):
+    self.frame = 1
+    self.count -= 1
+    self.y -= dir2 * 30
+    if (self.y < 100):
+     dir2 = 0
+     self.count = 0
+  if dir==0 and dir3==0 and dir2 == 0:
    self.h = 240
    self.frame = (self.frame + 0.1) % 2
 
