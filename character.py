@@ -23,13 +23,13 @@ class Curby():
    if (dash > 0):
     self.h = 320
     self.frame = (self.frame + 0.7) % 7
-    if(45<=self.x<=400):
-     self.x -= dir3 * 10
+    #if(45<=self.x<=400):
+     #self.x -= dir3 * 10
    elif (dash == 0):
     self.h = 360
     self.frame = (self.frame + 0.7) % 7
-    if(45<=self.x<=400):
-     self.x -= dir3 * 5
+    #if(45<=self.x<=400):
+     #self.x -= dir3 * 5
   if (dir2 > 0):
    self.h = 280
    self.count += 1
