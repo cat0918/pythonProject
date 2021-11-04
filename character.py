@@ -21,7 +21,7 @@ class Curby():
     #self.x += dir * 5
   if(dir3>0):
    if (dash > 0):
-    self.h = 320
+    self.h =  320
     self.frame = (self.frame + 0.7) % 7
     #if(45<=self.x<=400):
      #self.x -= dir3 * 10
