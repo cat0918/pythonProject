@@ -5,7 +5,7 @@ import title
 import change
 
 running = True
-change =1
+change =19
 
 
 open_canvas()
