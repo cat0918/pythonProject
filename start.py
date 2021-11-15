@@ -13,10 +13,8 @@ def update():
     global count
     if(character.dir>0):
         if(character.dash>0):
-
              x += 10
         elif(character.dash==0):
-
               x += 5
     elif(character.dir3>0):
         if(character.dash>0):
