@@ -42,15 +42,12 @@ class Curby():
     self.frame = 1
     self.count -= 1
     self.y -= dir2 * 30
-    if (self.y == 100):
+    if (self.y < 100):
      dir2 = 0
      self.count = 0
   if dir==0 and dir3==0 and dir2 == 0:
    self.h = 240
    self.frame = (self.frame + 0.1) % 2
-
-
-
  def draw(self):
   if(dir>0):
    self.image.clip_draw((int)(self.frame) * 45, self.h, 45, 40, self.x, self.y)
@@ -60,6 +57,8 @@ class Curby():
    self.image.clip_draw((int)(self.frame) * 45, self.h, 45, 40, self.x, self.y)
   elif dir==0 and dir3==0:
    self.image.clip_draw((int)(self.frame) * 45, self.h, 45, 40, self.x, self.y)
+ def get_bb(self):
+  return self.x-20, self.y-20,self.x+20, self.y+20
 def handle_events():
  global running
  global frame

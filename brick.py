@@ -22,3 +22,5 @@ class Brick():
                 self.x += 5
     def draw(self):
         self.image.clip_draw(self.frame, 0, 920, 920, self.x, self.y, 45, 40)
+    def get_bb(self):
+        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
