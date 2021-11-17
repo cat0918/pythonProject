@@ -7,18 +7,24 @@ import game_world
 import stage1
 import start2
 import pipe
+import star
+import flag
 
 image = None
 x,y = 0,0
 count =0
+starcount=0
+
 
 Block = [ ]
 Monster= [ ]
 Tunnel = [ ]
+Star = [ ]
+Flag = [ ]
 
 def enter():
     global image
-    global curby, monster, block, back,Block, Monster,Tunnel
+    global curby, monster, block, back,Block, Monster,Tunnel, Star, Flag
     curby = character.Curby()
     block()
     Monster.append(goomba.Goomba(800,100))
@@ -27,9 +33,13 @@ def enter():
     Tunnel.append(pipe.Pipe(1800,100))
     Tunnel.append(pipe.Pipe(1880,100))
     Tunnel.append(pipe.Pipe(1960,100))
+    Star.append(star.Star(1420,100))
+    Flag.append(flag.Flag(2600,250))
     for i in range(22):
         game_world.add_object(Block[i], 1)
     game_world.add_object(Monster[0], 1)
+    game_world.add_object(Star[0], 1)
+    game_world.add_object(Flag[0], 1)
     for i in range(5):
      game_world.add_object(Tunnel[i], 1)
     back = stage1.Stage()
@@ -37,18 +47,30 @@ def enter():
 def update():
     global x
     global y
-    global curby, monster, block, back, Block,Monster,Tunnel
+    global curby, monster, block, back, Block,Monster,Tunnel,Star
     global count
+    global starcount
+    left_b, bottom_b, right_b, top_b = Block[0].get_bb()
     for i in range(22):
-     if(collide(curby, Block[i])):
+     if(collide(curby,Block[i])):
          curby.count = 11
-    for i in range(2):
-        if(collide(Monster[0], Tunnel[i])):
-            goomba.smash =1
+    if(collide(curby, Star[0])):
+        game_world.remove_object(Star[0])
+        starcount += 1
+        print(starcount)
+
     curby.update()
     for game_object in game_world.all_objects():
         game_object.update()
     back.update()
+    if (collide(curby, Flag[0])):
+        print(starcount)
+        if (starcount > 1):
+            flag.clear = 1
+            count += 1
+            print(count)
+            if(count>7):
+             game_framework.change_state(start2)
     delay(0.07)
 
 
@@ -95,6 +117,13 @@ def collide(a, b):
  if top_a < bottom_b: return False
  if bottom_a > top_b: return False
  return True
+def top(a, b):
+ left_a, bottom_a, right_a, top_a = a.get_bb()
+ left_b, bottom_b, right_b, top_b = b.get_bb()
+ if top_b-5<bottom_a and bottom_a < top_b+5 and left_b<left_a and left_a< right_b: return True
+ elif top_b-5<bottom_a and bottom_a < top_b+5 and left_b<right_a and right_a< right_b: return True
+ return False
+
 
 def block():
     global Block

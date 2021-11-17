@@ -11,10 +11,8 @@ count =0
 
 def enter():
     global image
-    global curby, monster, block, back
+    global curby, monster, block, back, Block, Monster, Tunnel, Star, Flag
     curby = character.Curby()
-    monster = goomba.Goomba()
-    block = brick.Brick()
     back = stage2.Stage2()
     curby.y = 200
     curby.floor = 200
@@ -25,10 +23,8 @@ def update():
     global curby, monster, block, back
     global count
     curby.update()
-    monster.update()
-    block.update()
     back.update()
-    print('check')
+
     delay(0.1)
 
 
@@ -40,8 +36,6 @@ def draw():
     clear_canvas()
     back.draw()
     curby.draw()
-    monster.draw()
-    block.draw()
     update_canvas()
 
 def handle_events():
@@ -59,6 +53,4 @@ def exit():
     global curby, monster, block, back
     del(image)
     del(curby)
-    del(monster)
-    del(block)
     del(back)

@@ -45,7 +45,7 @@ class Curby():
     self.y -= dir2 * 30
     if (self.y < self.floor):
      dir2 = 0
-     self.y = 100
+     self.y = self.floor
      self.count = 0
   if dir==0 and dir3==0 and dir2 == 0:
    self.h = 240
