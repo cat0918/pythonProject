@@ -59,31 +59,29 @@ class Curby():
    self.image.clip_draw((int)(self.frame) * 45, self.h, 45, 40, self.x, self.y)
  def get_bb(self):
   return self.x-20, self.y-20,self.x+20, self.y+20
-def handle_events():
- global running
- global frame
- global x
- global dir
- global dir2
- global dir3
- global dash
- events = get_events()
- for event in events:
-  if event.type == SDL_KEYDOWN:
-   if event.key == SDLK_RIGHT:
+ def handle_events(self, eventtype, eventkey):
+  global running
+  global frame
+  global x
+  global dir
+  global dir2
+  global dir3
+  global dash
+  if eventtype == SDL_KEYDOWN:
+   if eventkey == SDLK_RIGHT:
     dir +=1
-   elif event.key == SDLK_UP:
-    dir2 +=1
-   elif event.key == SDLK_LEFT:
-    dir3 += 1
-   elif event.key == SDLK_e:
+   elif eventkey == SDLK_LEFT:
+    dir3 +=1
+   elif eventkey == SDLK_UP:
+    dir2 += 1
+   elif eventkey == SDLK_e:
     dash +=1
-  elif event.type == SDL_KEYUP:
-   if event.key == SDLK_RIGHT:
-    dir -= 1
-   elif event.key == SDLK_LEFT:
+  elif eventtype == SDL_KEYUP:
+   if eventkey == SDLK_RIGHT:
+    dir -=1
+   elif eventkey == SDLK_LEFT:
     dir3 -=1
-   elif event.key == SDLK_e:
+   elif eventkey == SDLK_e:
     dash -=1
 
 
