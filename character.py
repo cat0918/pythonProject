@@ -7,6 +7,7 @@ class Curby():
   self.h = 360
   self.frame = 0
   self.count = 0
+  self.floor= 100
   self.image = load_image('curby.png')
  def update(self):
   global dir
@@ -42,8 +43,9 @@ class Curby():
     self.frame = 1
     self.count -= 1
     self.y -= dir2 * 30
-    if (self.y < 100):
+    if (self.y < self.floor):
      dir2 = 0
+     self.y = 100
      self.count = 0
   if dir==0 and dir3==0 and dir2 == 0:
    self.h = 240

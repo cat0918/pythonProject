@@ -10,9 +10,11 @@ class Stage():
     def update(self):
         if (character.dir > 0):
            if (character.dash > 0):
-               self.x += 10
+               if(self.x<800):
+                self.x += 10
            elif (character.dash == 0):
-               self.x += 5
+               if(self.x<800):
+                self.x += 5
         elif (character.dir3 > 0):
            if (character.dash > 0):
                if (self.x > 0):
