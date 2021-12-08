@@ -23,4 +23,4 @@ class Pipe():
     def draw(self):
         self.image.clip_draw(self.frame, 0, 159, 203, self.x, self.y, 80, 90)
     def get_bb(self):
-        return self.x - 30, self.y - 20, self.x + 30, self.y + 20
+        return self.x - 40, self.y - 45, self.x + 40, self.y + 45

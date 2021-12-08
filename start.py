@@ -55,6 +55,12 @@ def update():
      if(collidetest(curby,Block[i])):
          curby.y = Block[i].y+20
          curby.crash = 1
+     elif(collide(curby,Block[i])):
+         curby.count = 11
+    for i in range(5):
+        if(collidetest(curby,Tunnel[i])):
+            curby.y = Tunnel[i].y+45
+            curby.crash = 1
 
 
     if(collide(curby, Star[0])):
@@ -123,8 +129,8 @@ def collide(a, b):
 def collidetest(a, b):
  left_a, bottom_a, right_a, top_a = a.get_bb()
  left_b, bottom_b, right_b, top_b = b.get_bb()
- if bottom_a >top_b  and left_a > left_b and left_a < right_b: return True
- if bottom_a>top_b  and right_a>left_b and right_a < right_b: return True
+ if bottom_a >top_b-5 and bottom_a<top_b+20  and left_a > left_b and left_a < right_b: return True
+ if bottom_a>top_b-5 and bottom_a<top_b+20< right_a>left_b and right_a < right_b: return True
 
 
 def block():
