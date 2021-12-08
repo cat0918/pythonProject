@@ -1,0 +1,6 @@
+Block = [ ]
+Monster= [ ]
+Tunnel = [ ]
+Star = [ ]
+Flag = [ ]
+Spike = [ ]

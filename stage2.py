@@ -20,7 +20,6 @@ class Stage2():
             if (character.dash > 0):
                 if (self.x > 0):
                     self.x -= 10
-
             elif (character.dash == 0):
                 if (self.x > 0):
                     self.x -= 5

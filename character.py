@@ -8,7 +8,9 @@ class Curby():
   self.frame = 0
   self.count = 0
   self.crash = 0
+  self.fall = 0
   self.floor= 100
+  self.f=100
   self.image = load_image('curby.png')
  def update(self):
   global dir
@@ -22,6 +24,7 @@ class Curby():
     self.h = 360
     self.frame = (self.frame + 0.7) % 7
     #self.x += dir * 5
+
   if(dir3>0):
    if (dash > 0):
     self.h =  320
@@ -31,8 +34,7 @@ class Curby():
    elif (dash == 0):
     self.h = 360
     self.frame = (self.frame + 0.7) % 7
-    #if(45<=self.x<=400):
-     #self.x -= dir3 * 5
+
   if (dir2 > 0):
    self.h = 280
    self.count += 1
@@ -43,15 +45,20 @@ class Curby():
    elif (self.count > 10):
     self.frame = 1
     self.count -= 1
-    self.y -= dir2 * 30
+    self.y -= dir2 * 15
     if (self.y < self.floor):
      dir2 = 0
+     print(self.floor)
      self.y = self.floor
+     print(self.y)
      self.count = 0
    if(self.crash ==1):
     dir2 = 0
+    self.y = self.floor
     self.count = 0
     self.crash = 0
+    self.floor = self.f
+
   if dir==0 and dir3==0 and dir2 == 0:
    self.h = 240
    self.frame = (self.frame + 0.1) % 2
@@ -64,6 +71,7 @@ class Curby():
    self.image.clip_draw((int)(self.frame) * 45, self.h, 45, 40, self.x, self.y)
   elif dir==0 and dir3==0:
    self.image.clip_draw((int)(self.frame) * 45, self.h, 45, 40, self.x, self.y)
+  draw_rectangle(*self.get_bb())
  def get_bb(self):
   return self.x-20, self.y-20,self.x+20, self.y+20
  def handle_events(self, eventtype, eventkey):

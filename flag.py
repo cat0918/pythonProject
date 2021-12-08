@@ -7,14 +7,15 @@ class Flag():
         self.x = x
         self.y = y
         self.frame =0
+        self. side = 0
         self.image = load_image('flag.png')
     def update(self):
-        if (character.dir > 0):
+        if (character.dir > 0 and self.side == 0):
             if (character.dash > 0):
                 self.x -= 10
             elif (character.dash == 0):
                 self.x -= 5
-        elif (character.dir3 > 0):
+        elif (character.dir3 > 0 and self.side == 0):
             if (character.dash > 0):
 
                 self.x += 10
@@ -28,5 +29,6 @@ class Flag():
         else:
          self.image = load_image('clear.png')
          self.image.clip_draw(self.frame, 0, 900, 2062, self.x, self.y, 200, 400)
+         draw_rectangle(*self.get_bb())
     def get_bb(self):
         return self.x - 70, self.y - 200, self.x + 70, self.y + 200

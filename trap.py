@@ -1,12 +1,12 @@
 from pico2d import *
 import character
 
-class Star():
+class Trap():
     def __init__(self,x,y):
         self.x = x
         self.y = y
         self.frame =0
-        self.image = load_image('star.png')
+        self.image = load_image('trap.png')
     def update(self):
         if (character.dir > 0):
             if (character.dash > 0):
@@ -21,7 +21,6 @@ class Star():
 
                 self.x += 5
     def draw(self):
-        self.image.clip_draw(self.frame, 0, 348, 346, self.x, self.y, 60, 60)
-        draw_rectangle(*self.get_bb())
+        self.image.clip_draw(self.frame, 0, 839, 900, self.x, self.y, 20, 20)
     def get_bb(self):
-        return self.x - 20, self.y - 30, self.x + 20, self.y + 30
+        return self.x - 10, self.y - 10, self.x + 10, self.y + 10

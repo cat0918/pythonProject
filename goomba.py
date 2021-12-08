@@ -13,6 +13,7 @@ class Goomba():
         self.h = 105
         self.frame=0
         self.count = 0
+        self.death = 0
         self.image = load_image('monster.png')
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
@@ -52,14 +53,16 @@ class Goomba():
     def draw(self):
         global dir
         global dir2
-        global death
+        if(self.death == 1):
+            dir = 0
+            dir2 = 0
+            self.image = load_image('goombadeath.png')
+            self.image.clip_draw(0, 0, 120, 105, self.x, self.y, 45, 40)
         if (dir2> 0):
             self.image.clip_draw((int)(self.frame) * 120, 0, 120, 105, self.x, self.y, 45, 40)
         elif(dir >0):
             self.image.clip_composite_draw((int)(self.frame) * 120, 0, 120, 105, 0, 'h', self.x, self.y, 45, 40)
-        elif(death==1):
-            self.image = load_image('goombadeath.png')
-            self.image.clip_draw(0, 0, 120, 105, self.x, self.y, 45, 40)
+
 def collide(a, b):
  left_a, bottom_a, right_a, top_a = a.get_bb()
  left_b, bottom_b, right_b, top_b = b.get_bb()
