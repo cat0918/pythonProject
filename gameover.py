@@ -2,13 +2,13 @@ from pico2d import *
 import game_framework
 import start
 
-name = 'titlestate'
+name = 'overstate'
 image = None
 logo_time =0.0
 
 def enter():
     global image
-    image = load_image('title.jpg')
+    image = load_image('gameover.jpg')
 
 def update():
     global logo_time
@@ -18,7 +18,7 @@ def update():
 def draw():
     global image
     clear_canvas()
-    image.clip_draw(0,0,1987,2400,400,300,800,600)
+    image.clip_draw(0,0,1400,1050,400,300,800,600)
     update_canvas()
 def handle_events():
  events = get_events()

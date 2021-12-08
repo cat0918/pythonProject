@@ -9,6 +9,7 @@ import start2
 import pipe
 import star
 import flag
+import trap
 from list import *
 
 image = None
@@ -32,12 +33,14 @@ def enter():
     Star.append(star.Star(1420,400))
     Star.append(star.Star(2000,100))
     Flag.append(flag.Flag(2600,250))
+    Spike.append(trap.Trap(1000,600))
     for i in range(15):
         game_world.add_object(Block[i], 1)
     #game_world.add_object(Monster[0], 1)
     for i in range(2):
      game_world.add_object(Star[i], 1)
     game_world.add_object(Flag[0], 1)
+
     for i in range(3):
      game_world.add_object(Tunnel[i], 1)
     back = stage1.Stage()

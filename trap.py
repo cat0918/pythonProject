@@ -21,6 +21,7 @@ class Trap():
 
                 self.x += 5
     def draw(self):
-        self.image.clip_draw(self.frame, 0, 839, 900, self.x, self.y, 20, 20)
+        self.image.clip_draw(self.frame, 0, 839, 900, self.x, self.y, 30, 30)
+        draw_rectangle(*self.get_bb())
     def get_bb(self):
-        return self.x - 10, self.y - 10, self.x + 10, self.y + 10
+        return self.x - 15, self.y - 15, self.x + 15, self.y + 15

@@ -9,6 +9,8 @@ import pipe
 import trap
 import star
 import flag
+import gameover
+import gameclear
 from list2 import *
 
 image = None
@@ -18,28 +20,52 @@ count =0
 
 def enter():
     global image
-    global curby, monster, block, back, Block, Monster, Tunnel, Star, Flag,Trap
+    global curby, monster, block, back, Block, Monster, Tunnel, Star, Flag
     curby = character.Curby()
     back = stage2.Stage2()
     curby.y = 200
     curby.floor = 200
     curby.f = 200
+    flag.clear = 0
     block()
     tunnel()
     Flag.append(flag.Flag(2400, 350))
-    Spike.append(trap.Trap(820,200))
+    Spike.append(trap.Trap(860,180))
+    Spike.append(trap.Trap(890,180))
+    Spike.append(trap.Trap(920,180))
+    Spike.append(trap.Trap(950,180))
+    Spike.append(trap.Trap(980,180))
+    Spike.append(trap.Trap(1010,180))
+    Spike.append(trap.Trap(1040,180))
+    Spike.append(trap.Trap(1070,180))
+    Spike.append(trap.Trap(1160,180))
+    Spike.append(trap.Trap(1190,180))
+    Spike.append(trap.Trap(1220,180))
+    Spike.append(trap.Trap(1250,180))
+    Spike.append(trap.Trap(1280,180))
+    Spike.append(trap.Trap(1310,180))
+    Spike.append(trap.Trap(1340,180))
+    Spike.append(trap.Trap(1370,180))
+    Spike.append(trap.Trap(1400,180))
+    Spike.append(trap.Trap(1430,180))
+    Spike.append(trap.Trap(1460,180))
+    Spike.append(trap.Trap(1490,180))
+    Star.append(star.Star(1460,500))
     for i in range(3):
         game_world2.add_object(Tunnel[i], 1)
     for i in range(22):
         game_world2.add_object(Block[i],1)
     game_world2.add_object(Flag[0],1)
+    game_world2.add_object(Star[0],1)
+    for i in range(20):
+     game_world2.add_object(Spike[i],1)
     #for i in range(4):
         #game_world2.add_object(Spike[i],1)
 
 def update():
     global x
     global y
-    global curby, monster, block, back, Block, Tunnel,Spike
+    global curby, monster, block, back, Block, Tunnel
     global count
     curby.update()
     back.update()
@@ -57,9 +83,12 @@ def update():
         if(collide(curby,Tunnel[i]) == 2):
             curby.floor = Tunnel[i].y+60
             curby.crash = 1
-        elif(collide(curby,Tunnel[i]) == 1):
-            print(123)
-            #back.side = 1
+    if (collide(curby,Spike[0])):
+        game_framework.change_state(gameclear)
+    if (collide(curby, Star[0])):
+        game_world2.remove_object(Star[0])
+    if (collide(curby, Flag[0])):
+        game_framework.change_state(gameclear)
     for game_object in game_world2 .all_objects():
         game_object.update()
 
@@ -70,7 +99,7 @@ def draw():
     global image
     global x
     global y
-    global curby, monster, block, back, Block, Tunnel,Spike
+    global curby, monster, block, back, Block, Tunnel
     clear_canvas()
     back.draw()
     curby.draw()
@@ -130,11 +159,6 @@ def tunnel():
     Tunnel.append(pipe.Pipe(800, 200))
     Tunnel.append(pipe.Pipe(1100, 200))
     Tunnel.append(pipe.Pipe(1800, 200))
-
-
-def trap():
-    global Spike
-    #Spike.append(trap.Trap(820,200))
 
 
 def collide(a, b):

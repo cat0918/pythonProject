@@ -8,7 +8,7 @@ logo_time =0.0
 
 def enter():
     global image
-    image = load_image('title.jpg')
+    image = load_image('gameclear.png')
 
 def update():
     global logo_time
@@ -18,7 +18,7 @@ def update():
 def draw():
     global image
     clear_canvas()
-    image.clip_draw(0,0,1987,2400,400,300,800,600)
+    image.clip_draw(0,0,1280,720,400,300,800,600)
     update_canvas()
 def handle_events():
  events = get_events()
