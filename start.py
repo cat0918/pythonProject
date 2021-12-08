@@ -52,8 +52,11 @@ def update():
     global starcount
     left_b, bottom_b, right_b, top_b = Block[0].get_bb()
     for i in range(22):
-     if(collide(curby,Block[i])):
-         curby.count = 11
+     if(collidetest(curby,Block[i])):
+         curby.y = Block[i].y+20
+         curby.crash = 1
+
+
     if(collide(curby, Star[0])):
         game_world.remove_object(Star[0])
         starcount += 1
@@ -117,12 +120,11 @@ def collide(a, b):
  if top_a < bottom_b: return False
  if bottom_a > top_b: return False
  return True
-def top(a, b):
+def collidetest(a, b):
  left_a, bottom_a, right_a, top_a = a.get_bb()
  left_b, bottom_b, right_b, top_b = b.get_bb()
- if top_b-5<bottom_a and bottom_a < top_b+5 and left_b<left_a and left_a< right_b: return True
- elif top_b-5<bottom_a and bottom_a < top_b+5 and left_b<right_a and right_a< right_b: return True
- return False
+ if bottom_a >top_b  and left_a > left_b and left_a < right_b: return True
+ if bottom_a>top_b  and right_a>left_b and right_a < right_b: return True
 
 
 def block():
