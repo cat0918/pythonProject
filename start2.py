@@ -86,10 +86,11 @@ def update():
         if(collide(curby,Tunnel[i]) == 2):
             curby.floor = Tunnel[i].y+60
             curby.crash = 1
-    
-    if (collide(curby, Star[0])):
+    if(collide(curby,Ro[0])):
+        game_framework.change_state(gameover)
+    elif (collide(curby, Star[0])):
         game_world2.remove_object(Star[0])
-    if (collide(curby, Flag[0])):
+    elif (collide(curby, Flag[0])):
         game_framework.change_state(gameclear)
     for game_object in game_world2 .all_objects():
         game_object.update()

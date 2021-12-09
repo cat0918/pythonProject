@@ -1,6 +1,6 @@
 from pico2d import *
 import game_framework
-import start
+import start2
 
 name = 'overstate'
 image = None
@@ -27,7 +27,7 @@ def handle_events():
          game_framework.quit()
      else:
          if(event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
-             game_framework.change_state(start)
+             game_framework.change_state(start2)
 
 def exit():
     global image
