@@ -9,6 +9,7 @@ import pipe
 import trap
 import star
 import flag
+import rocket
 import gameover
 import gameclear
 from list2 import *
@@ -29,6 +30,7 @@ def enter():
     flag.clear = 0
     block()
     tunnel()
+    Ro.append(rocket.Rocket(800,350))
     Flag.append(flag.Flag(2400, 350))
     Spike.append(trap.Trap(860,180))
     Spike.append(trap.Trap(890,180))
@@ -57,6 +59,7 @@ def enter():
         game_world2.add_object(Block[i],1)
     game_world2.add_object(Flag[0],1)
     game_world2.add_object(Star[0],1)
+    game_world2.add_object(Ro[0],1)
     for i in range(20):
      game_world2.add_object(Spike[i],1)
     #for i in range(4):
@@ -83,8 +86,7 @@ def update():
         if(collide(curby,Tunnel[i]) == 2):
             curby.floor = Tunnel[i].y+60
             curby.crash = 1
-    if (collide(curby,Spike[0])):
-        game_framework.change_state(gameclear)
+    
     if (collide(curby, Star[0])):
         game_world2.remove_object(Star[0])
     if (collide(curby, Flag[0])):
