@@ -10,6 +10,7 @@ class Curby():
   self.crash = 0
   self.fall = 0
   self.floor= 100
+  self.stop = 0
   self.f=100
   self.image = load_image('curby.png')
  def update(self):
@@ -62,6 +63,8 @@ class Curby():
   if dir==0 and dir3==0 and dir2 == 0:
    self.h = 240
    self.frame = (self.frame + 0.1) % 2
+  if self.stop == 1:
+   dir = 0
  def draw(self):
   if(dir>0):
    self.image.clip_draw((int)(self.frame) * 45, self.h, 45, 40, self.x, self.y)

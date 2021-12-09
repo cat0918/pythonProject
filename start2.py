@@ -87,7 +87,9 @@ def update():
             curby.floor = Tunnel[i].y+60
             curby.crash = 1
     if(collide(curby,Ro[0])):
+        curby.stop = 1
         game_framework.change_state(gameover)
+        game_world2.clear()
     elif (collide(curby, Star[0])):
         game_world2.remove_object(Star[0])
     elif (collide(curby, Flag[0])):
@@ -123,7 +125,6 @@ def handle_events():
 def exit():
     global image
     global curby, monster, block, back, Tunnel,Spike
-    del(image)
     del(curby)
     del(back)
 
